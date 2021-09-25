@@ -1,15 +1,15 @@
-package main;
+package main.java;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
-public class Feld {
+public class Field {
 
 	public boolean unchanged = true;
 	public JButton button;
-	public int eigenerWert;
+	public int ownState;
 	
-	public Feld(ImageIcon I) { 
+	public Field(ImageIcon I) { 
 		button = new JButton(I);
 		
 	}
