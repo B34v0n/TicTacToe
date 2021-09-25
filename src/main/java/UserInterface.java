@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTextArea;
+import javax.swing.JTextPane;
 
 public class UserInterface extends Function implements ActionListener{
 	
@@ -32,6 +34,7 @@ public class UserInterface extends Function implements ActionListener{
 	Field downRight = new Field(emptyPicture);
 	JButton resetButton = new JButton("reset");
 	ArrayList<Field> allFields = new ArrayList<>();
+	JLabel playerShow = new JLabel(crossPicture);
 
 	
 	public UserInterface() {
@@ -66,10 +69,14 @@ public class UserInterface extends Function implements ActionListener{
 		resetButton.setBounds(600,50,100,50);
 		resetButton.addActionListener(this);
 		
+		JTextArea text = new JTextArea("It's your turn:");
+		text.setBounds(600,250,70,20);
+		playerShow.setBounds(600,300,70,70);
+		
 		f.add(upperLeft.button); f.add(upperMiddle.button); f.add(upperRight.button); 
 		f.add(middleLeft.button); f.add(middleMiddle.button); f.add(middleRight.button); 
 		f.add(downLeft.button); f.add(downMiddle.button); f.add(downRight.button);
-		f.add(resetButton);
+		f.add(resetButton); f.add(playerShow); f.add(text);
 
 		f.setSize(800, 700);
 		f.setLayout(null);
@@ -93,6 +100,7 @@ public class UserInterface extends Function implements ActionListener{
 				break;
 			}
 		super.changePlayersState();
+		changePlayerShow();
 		F.unchanged = false;
 		F.ownState = playersState;
 		super.checkForWin(1);
@@ -142,6 +150,7 @@ public class UserInterface extends Function implements ActionListener{
 			super.playersState = 1;
 		}
 		setButtonsEnable(true);
+		changePlayerShow();
 	}
 	
 	private String getPath() {
@@ -172,6 +181,15 @@ public class UserInterface extends Function implements ActionListener{
 	private void setFieldsUnchanged() {
 		for(Field f : allFields) {
 			f.unchanged = true;
+		}
+	}
+	
+	private void changePlayerShow() {
+		if(super.getPlayersState() == 1) {
+			playerShow.setIcon(crossPicture);
+		}
+		else if(super.getPlayersState() == 2) {
+			playerShow.setIcon(circlePicture);
 		}
 	}
 }
