@@ -141,9 +141,10 @@ public class UserInterface extends Function implements ActionListener{
 			f.unchanged = true;
 			super.playersState = 1;
 		}
+		setButtonsEnable(true);
 	}
 	
-	String getPath() {
+	private String getPath() {
 		try{
 			Path p = Paths.get(UserInterface.class.getResource("..").toURI());
 			p = p.getParent();
@@ -155,7 +156,22 @@ public class UserInterface extends Function implements ActionListener{
 			System.err.print(e.toString());
 			return null;
 		}
-			
-		
+	}
+	
+	public void setSpectatingMode() {
+		setFieldsUnchanged(); 
+		setButtonsEnable(false);
+	}
+	
+	private void setButtonsEnable(boolean enable) {
+		for(Field f : allFields) {
+			f.button.setEnabled(enable);
+		}
+	}
+	
+	private void setFieldsUnchanged() {
+		for(Field f : allFields) {
+			f.unchanged = true;
+		}
 	}
 }

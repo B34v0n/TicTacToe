@@ -23,24 +23,18 @@ public class Function {
 			if(player==1) {
 				JOptionPane.showMessageDialog(uI.f, "The Winner is X!",
 						"Congrats!", JOptionPane.PLAIN_MESSAGE);
-				JOptionPane.showMessageDialog(uI.f, "The Board will reset itself now.", "Reset!",
-					    JOptionPane.WARNING_MESSAGE);
-				uI.reset();
+				uI.setSpectatingMode();
 			}
 			if(player==2) {
 				JOptionPane.showMessageDialog(uI.f, "The Winner is O!",
 						"Congrats!", JOptionPane.PLAIN_MESSAGE);
-				JOptionPane.showMessageDialog(uI.f, "The Board will reset itself now.", "Reset!",
-					    JOptionPane.WARNING_MESSAGE);
-				uI.reset();
+				uI.setSpectatingMode();
 			}
 		}
 		if(areAllFieldsChanged()) {
 			JOptionPane.showMessageDialog(uI.f, "This is a Tie!",
 					"Oh No!", JOptionPane.WARNING_MESSAGE);
-			JOptionPane.showMessageDialog(uI.f, "The Board will reset itself now.", "Reset!",
-				    JOptionPane.WARNING_MESSAGE);
-			uI.reset();
+			uI.setSpectatingMode();
 		}
 	}
 	
